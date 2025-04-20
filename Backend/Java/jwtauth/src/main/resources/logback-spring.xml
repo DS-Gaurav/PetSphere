@@ -1,0 +1,26 @@
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type
+             ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <pattern>%d{ dd/L/YYYY hh:mm:ss: a} [%thread] %-5level %logger{36} -%kvp- %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="FILE_SOUT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/jwtauth.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern> logs/jwtauth-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{ dd/L/YYYY hh:mm:ss: a} [%thread] %-5level %logger{36} -%kvp- %msg%n</pattern>
+        </encoder>
+    </appender>
+    <root level="debug">
+        <appender-ref ref="STDOUT" />
+    </root>
+    <logger name="com.zaxxer.hikari" level="WARN"/>
+    <logger name="com.examplejjwt.jwtauth" level="DEBUG" additivity="false">
+            <appender-ref ref="FILE_SOUT "/>
+    </logger>
+</configuration>
