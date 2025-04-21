@@ -13,6 +13,7 @@ import ThankYou from "./pages/ThankYou";
 import Services from "./pages/Services";
 import ProfilePage from "./pages/ProfilePage";
 import CompleteProfilePage from "./pages/CompleteProfilePage";
+import About from "./pages/About";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/profile" element={< ProfilePage/>}/>
             <Route path="/complete-profile" element={<CompleteProfilePage />} />
+            <Route path="/about" element={<About />} />
           </Route>
       </Routes>
     </Router>
