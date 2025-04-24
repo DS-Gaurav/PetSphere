@@ -1,0 +1,10 @@
+flask
+pandas
+requests
+fastapi
+uvicorn
+google-generativeai
+python-dotenv
+pydantic
+Flask
+

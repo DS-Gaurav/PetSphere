@@ -1,9 +1,11 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS  # <-- ADD THIS LINE
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 app = Flask(__name__)
+CORS(app)  # <-- ADD THIS LINE TO ENABLE CORS FOR ALL ROUTES
 
 # Load CSV
 df = pd.read_csv("food_products.csv")

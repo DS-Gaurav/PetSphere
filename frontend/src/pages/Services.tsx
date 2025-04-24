@@ -63,6 +63,7 @@ const Services = () => {
     {
       title: 'Pet Food Recommendation',
       description: 'Get detailed info and recommendations related to pet food.',
+      link: '/food-recommendation',
     },
     {
       title: 'Nearby Pet Store',

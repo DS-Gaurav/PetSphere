@@ -5,8 +5,10 @@ import Navbar from "../components/Navbar";
 
 const ProfilePage = () => {
   const [profile, setProfile] = useState(null);
+  const [errorMsg, setErrorMsg] = useState("");
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
+
   let userId = null;
   if (token) {
     try {
@@ -24,6 +26,7 @@ const ProfilePage = () => {
       if (!userId) return;
 
       try {
+        console.log(token);
         const response = await axios.get(
           `http://localhost:9090/users/profiles/${userId}`,
           {
@@ -31,8 +34,13 @@ const ProfilePage = () => {
           }
         );
         setProfile(response.data);
+        setErrorMsg("");
       } catch (error) {
         console.error("Error fetching profile:", error);
+        const msg =
+          error.response?.data?.message ||
+          "Something went wrong while fetching the profile.";
+        setErrorMsg(msg);
       }
     };
 
@@ -44,6 +52,9 @@ const ProfilePage = () => {
       <div className="min-h-screen bg-gray-100">
         <Navbar />
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+          {errorMsg && (
+            <div className="text-red-600 mb-4 font-medium">{errorMsg}</div>
+          )}
           <h2 className="text-xl font-semibold mb-4 text-gray-700">
             Your profile is incomplete
           </h2>
